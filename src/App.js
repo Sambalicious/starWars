@@ -1,6 +1,5 @@
 import React from 'react';
 import {useSelector, useDispatch } from 'react-redux'
-import './App.css';
 import { ADD_NUMBER, SUBSTRACT_NUMBER } from './redux/Types';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import LandingPage from './components/Home/LandingPage';

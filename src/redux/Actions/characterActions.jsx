@@ -28,7 +28,7 @@ const getCharacterError = payload =>{
         axios.get("/people")
         .then(response =>{
             const characters = response.data;
-            dispatch(getCharacterSuccess(characters));
+            dispatch(getCharacterSuccess(characters.results));
         }).catch(error =>{
             const errors = error.message;
             dispatch(getCharacterError(errors));

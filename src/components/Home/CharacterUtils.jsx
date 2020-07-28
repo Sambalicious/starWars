@@ -2,11 +2,11 @@ import React from 'react'
 
 const CharacterUtils = ({name, img}) => {
     return (
-        <>
+    
              <div className="box">
                             <div className="box-flex">
                                 <div className="img-fix">
-                                    <img src={img} loading="lazy" alt=""/>
+                                    <img src={img} loading="lazy" alt="avatar"/>
                                 </div>
                                 <div className="text">
                                     <h3>{name} </h3>
@@ -17,7 +17,7 @@ const CharacterUtils = ({name, img}) => {
 
                             </div>
              </div>   
-        </>
+    
     )
 }
 

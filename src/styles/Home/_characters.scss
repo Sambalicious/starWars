@@ -58,4 +58,9 @@
          background: rgba(0,0,0,0.2);
      }
      }
+     .bottom-rule{
+         border-bottom: 5px solid black;
+         padding-bottom: $xtra-small;
+         border-radius: 2px;
+     }
 }

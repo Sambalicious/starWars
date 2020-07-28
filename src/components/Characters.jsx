@@ -17,18 +17,25 @@ const Characters = () => {
     },[dispatch])
 
     
+    console.log(charactersData.characters.results)
     console.log(charactersData)
-    
     return (
         <div id="characters">
-                 <h2>Popular characters </h2> 
+                 <h2>Popu<span className="bottom-rule">lar char</span>acters </h2> 
+
+
+
+
                 <div className="parent">
 
                
-                {
-                    charactersData.characters.map(character=>
+                { charactersData.loading ? <h2>Loading</h2> : charactersData.error ? <h2>Network Error</h2>:
+                   charactersData.characters &&  charactersData.characters.results && charactersData.characters.results.map(character=>
                         <CharacterUtils
+                            key={character.name}
                          name={character.name}
+                         birthyear={character.birth_year}
+                         gender={character.gender}
                           img={character1} />
                     )
                 }

@@ -4,7 +4,7 @@ import { GET_CHARACTERS_ERROR , GET_CHARACTERS_SUCCESS, GET_CHARACTERS_REQUEST} 
 const initialState = {
     loading: false,
     characters: [],
-    error: []
+    error: ""
 }
 
 export const characterReducer = (state=initialState, action) =>{

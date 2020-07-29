@@ -36,7 +36,7 @@ const Characters = () => {
       ];
 
         const filtered = selectedOption  ? allCharacter.filter(character=>character.gender === selectedOption.value): allCharacter;
-      
+       
     return (
         <div id="characters">
                  <h2>Popu<span className="bottom-rule">lar char</span>acters </h2> 
@@ -80,7 +80,7 @@ const Characters = () => {
                           img={character1} />
                        
                           
-                    ): <p>No data for this Selection<</p>
+                    ): <p>No Data for this selection</p>
                 }
                       
 

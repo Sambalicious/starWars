@@ -2,7 +2,7 @@
 
         margin-top: $xtra-large;
         margin-bottom: $large;
-        
+        padding: 0 $xtra-large;
 
         h2{
             font-weight: 900;
@@ -62,5 +62,18 @@
          border-bottom: 5px solid black;
          padding-bottom: $xtra-small;
          border-radius: 2px;
+     }
+     .flex{
+         justify-content:flex-start;
+         display: flex;
+     }
+
+     .inline-flex{
+         display: inline-flex;
+         margin-right: $xtra-large;
+         justify-content: center;
+     }
+     .mr{
+         margin-right: $xtra-small;margin-top: $xtra-small
      }
 }

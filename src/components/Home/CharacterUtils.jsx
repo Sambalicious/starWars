@@ -6,7 +6,7 @@ const CharacterUtils = ({name, img, birthyear,gender}) => {
              <div className="box">
                             <div className="box-flex">
                                 <div className="img-fix">
-                                    <img src={img} loading="lazy" alt="avatar"/>
+                                    <img src={img}   alt="avatar"/>
                                 </div>
                                 <div className="text">
                                     <h3>{name} </h3>

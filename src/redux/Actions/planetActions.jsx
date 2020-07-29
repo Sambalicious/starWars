@@ -1,6 +1,6 @@
 import Axios from "axios"
 
-const { GET_PLANETS_REQUEST, GET_PLANETS_SUCCESS, GET_CHARACTERS_ERROR } = require("../Types")
+const { GET_PLANETS_REQUEST, GET_PLANETS_SUCCESS, GET_PLANETS_ERROR } = require("../Types")
 
 
 
@@ -18,20 +18,22 @@ const getPlanetSuccess = payload =>{
 }
 
 const getPlanetError = payload =>{
-    type: GET_CHARACTERS_ERROR,
+  return {
+
+   type: GET_PLANETS_ERROR,
     payload
 }
-
+} 
 export const fetchPlanets = () => {
     return (dispatch) => {
         dispatch(getPlanetRequest);
-        Axios.get("https://swapi.dev/api/planets")
+        Axios.get("/planets")
         .then(response =>{
             const planets = response.data;
             getPlanetSuccess(planets);
         }).catch(error =>{
-            const error = error.message
-            getPlanetError(error);
+            const errors = error.message
+            getPlanetError(errors);
         })
     }
 }

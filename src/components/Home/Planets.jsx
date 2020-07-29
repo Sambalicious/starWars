@@ -1,7 +1,8 @@
 import React,{useEffect}  from 'react';
 import {useSelector, useDispatch } from 'react-redux';
 
-import { fetchSpaceships } from '../../redux/Actions/spaceshipAction';
+import { fetchPlanets } from '../../redux/Actions/planetActions'
+
 import starship1 from '../../assets/starship-1.jpg';
 import starship2 from '../../assets/starship-2.jpg';
 import starship3 from '../../assets/starship-3.jpg';
@@ -14,33 +15,33 @@ import StarshipUtils from './StarshipUtils';
 
 
 
-const Starships = () => {
+const Planets = () => {
 
-    const starshipsData = useSelector(state => state.starships);
+    const planetsData = useSelector(state => state.planets);
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(fetchSpaceships());
+        dispatch(fetchPlanets());
     },[dispatch])
 
     //const allCharacter = charactersData.characters.results;
-    console.log(starshipsData)
+    console.log(planetsData)
 
 
     return (
         <div id="container">
-                   <h2>Popular starship </h2> 
+                   <h2>Popular Planets </h2> 
                     <div className="parent">
                         
-                      {starshipsData.loading ? <h2>Loading</h2> : starshipsData.error ? <h2>Network error</h2> :
+                      {planetsData.loading ? <h2>Loading</h2> : planetsData.error ? <h2>Network error</h2> :
 
-                       starshipsData.starships && starshipsData.starships.results &&
-                       starshipsData.starships.results.map(starship =>
+                       planetsData.planets && planetsData.planets.results &&
+                       planetsData.planets.results.map(planet =>
                             <StarshipUtils 
-                                key={starship.name}
-                                name={starship.name}
-                                model={starship.model}
-                                capacity={starship.cargo_capacity}
+                                key={planet.name}
+                                name={planet.name}
+                                model={planet.climate}
+                                population={planet.population}
                             />
                         )
                       
@@ -55,4 +56,4 @@ const Starships = () => {
     )
 }
 
-export default Starships
+export default Planets;

@@ -2,14 +2,11 @@ import React, { useEffect, useState } from 'react';
 import {useSelector, useDispatch } from 'react-redux';
 import Dropdown from 'react-dropdown';
 import Pagination from './Home/Pagination'
-import {ReactQueryDevtools}  from 'react-query-devtools'
-import {useQuery} from 'react-query'
 import 'react-dropdown/style.css';
 
 
-import character1 from '../assets/character-1.jpg';
-import character2 from '../assets/character-2.jpg';
-import character3 from '../assets/character-3.jpg';
+
+
 import character4 from '../assets/character-4.jpg';
 import { fetchCharacters } from '../redux/Actions/characterActions';
 import CharacterUtils from './Home/CharacterUtils';
@@ -88,19 +85,20 @@ const Characters = () => {
                          name={character.name}
                          birthyear={character.birth_year}
                          gender={character.gender}
-                          img={character1} />
+                          />
                        
                           
                     ): <p>No Data for this selection</p>
                 }
                       </div>
 
-                
+                <div className="text-center">
                 <Pagination
                     state={charactersData.characters}
                     setPage={setPage}
                 />
-            <ReactQueryDevtools initialIsOpen={false}/>
+                </div>
+           
     </div>
     
     )

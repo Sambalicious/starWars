@@ -8,12 +8,13 @@ const Pagination = ({setPage, state}) => {
         <nav> 
             <ul  className="inline-flex">
             <button onClick={()=>setPage(old => Math.max(old - 1, 1))}
-            
+                disabled={!state.previous}
             >Previous Page</button>
 
 
 
-            <button  onClick={()=>setPage(old => state && state.next !==null ? old + 1: old)}>Next page</button>
+            <button  onClick={()=>setPage(old => state && state.next !==null ? old + 1: old)}
+            disabled={!state.next}>Next page</button>
             </ul>
         </nav>
      );

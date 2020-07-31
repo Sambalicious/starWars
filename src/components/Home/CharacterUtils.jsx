@@ -1,12 +1,15 @@
-import React from 'react'
+import React from 'react';
+import character1 from '../../assets/character-1.jpg';
+import character4 from '../../assets/character-4.jpg';
+import character3 from '../../assets/character-3.jpg'
 
-const CharacterUtils = ({name, img, birthyear,gender}) => {
+const CharacterUtils = ({name, birthyear,gender}) => {
     return (
     
              <div className="box">
                             <div className="box-flex">
                                 <div className="img-fix">
-                                    <img src={img}   alt="avatar"/>
+                                    <img src={gender === "male" ? character1 : gender==="female" ? character4 : character3}  alt="avatar"/>
                                 </div>
                                 <div className="text">
                                     <h3>{name} </h3>

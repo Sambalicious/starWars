@@ -2,6 +2,7 @@ import { GET_CHARACTERS_SUCCESS, GET_CHARACTERS_REQUEST, GET_CHARACTERS_ERROR } 
 import axios from 'axios';
 
 
+
  const getCharacterRequest = () => {
     return {
         type: GET_CHARACTERS_REQUEST
@@ -22,10 +23,10 @@ const getCharacterError = payload =>{
     }
 }
 
- export const fetchCharacters = () =>{
+ export const fetchCharacters = (page) =>{
     return (dispatch) =>{
         dispatch(getCharacterRequest());
-        axios.get("/people")
+        axios.get(`/people/?page=${page}`)
         .then(response =>{
             const characters = response.data;
             dispatch(getCharacterSuccess(characters));

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import {useSelector, useDispatch } from 'react-redux';
 import Dropdown from 'react-dropdown';
+import Pagination from './Home/Pagination'
+import {ReactQueryDevtools}  from 'react-query-devtools'
+import {useQuery} from 'react-query'
 import 'react-dropdown/style.css';
+
 
 import character1 from '../assets/character-1.jpg';
 import character2 from '../assets/character-2.jpg';
@@ -16,27 +20,34 @@ import CharacterUtils from './Home/CharacterUtils';
 
 
 const Characters = () => {
-
+    const [page, setPage] = useState(1);
     const charactersData = useSelector(state => state.characters);
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(fetchCharacters());
-    },[dispatch])
-
+        dispatch(fetchCharacters(page))
+    },[dispatch, page])
+     
+   
     const allCharacter = charactersData.characters.results;
     const [selectedOption, handleSelectedOption] = useState(null);
     const [selectedOptionView, handleSelectedOptionView] = useState(null);
+    
+
+    console.log("page", page);
+
+
+ console.log(charactersData.characters)
 
     const options = [
-        'male', 'female', 'robot'
+       "All", 'male', 'female', 'robot'
       ];
       const optionsView = [
         'Grid', 'List'
       ];
 
-        const filtered = selectedOption  ? allCharacter.filter(character=>character.gender === selectedOption.value): allCharacter;
-      
+        const filtered = selectedOption  && selectedOption.value !== "All" ? allCharacter.filter(character=>character.gender === selectedOption.value): allCharacter;
+       
     return (
         <div id="characters">
                  <h2>Popu<span className="bottom-rule">lar char</span>acters </h2> 
@@ -80,16 +91,16 @@ const Characters = () => {
                           img={character1} />
                        
                           
-                    ): <p>No data for this Selection<</p>
+                    ): <p>No Data for this selection</p>
                 }
-                      
-
-                       
-
-
-
                       </div>
 
+                
+                <Pagination
+                    state={charactersData.characters}
+                    setPage={setPage}
+                />
+            <ReactQueryDevtools initialIsOpen={false}/>
     </div>
     
     )

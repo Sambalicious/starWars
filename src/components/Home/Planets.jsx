@@ -9,6 +9,7 @@ import starship3 from '../../assets/starship-3.jpg';
 import starship4 from '../../assets/starship-4.jpg';
 import starship5 from '../../assets/starship-5.jpg';
 import StarshipUtils from './StarshipUtils';
+import PlanetsUtils from './PlanetsUtils';
 
 
 
@@ -25,7 +26,7 @@ const Planets = () => {
     },[dispatch])
 
     //const allCharacter = charactersData.characters.results;
-    console.log(planetsData)
+    console.log(planetsData.planets)
 
 
     return (
@@ -37,7 +38,7 @@ const Planets = () => {
 
                        planetsData.planets && planetsData.planets.results &&
                        planetsData.planets.results.map(planet =>
-                            <StarshipUtils 
+                            <PlanetsUtils 
                                 key={planet.name}
                                 name={planet.name}
                                 model={planet.climate}

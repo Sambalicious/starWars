@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import {useSelector, useDispatch } from 'react-redux';
 import Dropdown from 'react-dropdown';
 import Pagination from './Home/Pagination'
+import {ReactQueryDevtools}  from 'react-query-devtools'
+import {useQuery} from 'react-query'
 import 'react-dropdown/style.css';
 
 
@@ -18,18 +20,21 @@ import CharacterUtils from './Home/CharacterUtils';
 
 
 const Characters = () => {
-
+    const [page, setPage] = useState(1);
     const charactersData = useSelector(state => state.characters);
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(fetchCharacters());
-    },[dispatch])
-
+        dispatch(fetchCharacters(page))
+    },[dispatch, page])
+     
+   
     const allCharacter = charactersData.characters.results;
     const [selectedOption, handleSelectedOption] = useState(null);
     const [selectedOptionView, handleSelectedOptionView] = useState(null);
-    const [currentPage, handleCurrentPage] = useState(null);
+    
+
+    console.log("page", page);
 
 
  console.log(charactersData.characters)
@@ -92,10 +97,10 @@ const Characters = () => {
 
                 
                 <Pagination
-                    
-                    state={CharacterData.characters}
+                    state={charactersData.characters}
+                    setPage={setPage}
                 />
-
+            <ReactQueryDevtools initialIsOpen={false}/>
     </div>
     
     )

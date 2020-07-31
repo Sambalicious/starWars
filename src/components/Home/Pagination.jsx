@@ -1,18 +1,19 @@
 import React from 'react';
 
 
-const Pagination = props => {
-    const {  state } = props;
-
+const Pagination = ({setPage, state}) => {
     
-    
-    //state && state.previous === 1 ? null: null;
-  
+   
     return ( 
         <nav> 
             <ul  className="inline-flex">
-            <li onClick={()=>state.previous}>Previous</li>
-            <li  onClick={()=>state.next}>Next</li>
+            <button onClick={()=>setPage(old => Math.max(old - 1, 1))}
+            
+            >Previous Page</button>
+
+
+
+            <button  onClick={()=>setPage(old => state && state.next !==null ? old + 1: old)}>Next page</button>
             </ul>
         </nav>
      );

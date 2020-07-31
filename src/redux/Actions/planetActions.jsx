@@ -19,10 +19,9 @@ const getPlanetSuccess = payload =>{
 
 const getPlanetError = payload =>{
   return {
-
    type: GET_PLANETS_ERROR,
     payload
-}
+    }
 } 
 export const fetchPlanets = () => {
     return (dispatch) => {
@@ -30,10 +29,10 @@ export const fetchPlanets = () => {
         Axios.get("/planets")
         .then(response =>{
             const planets = response.data;
-            getPlanetSuccess(planets);
+          dispatch(getPlanetSuccess(planets));
         }).catch(error =>{
             const errors = error.message
-            getPlanetError(errors);
+            dispatch(getPlanetError(errors));
         })
     }
 }
